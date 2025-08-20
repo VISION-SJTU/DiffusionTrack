@@ -15,7 +15,7 @@ class DIFFUSIONTRACK(BaseTracker):
         network = build_diffusiontrack(params.cfg)
         print('load checkpoint from: ' + self.params.checkpoint)
         pth = torch.load(self.params.checkpoint, map_location='cpu')['net']
-      #  network.load_state_dict(pth, strict=True)
+        network.load_state_dict(pth, strict=True)
         self.cfg = params.cfg
         self.seq_format = self.cfg.DATA.SEQ_FORMAT
         self.num_template = self.cfg.TEST.NUM_TEMPLATES
