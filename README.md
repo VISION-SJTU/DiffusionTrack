@@ -9,7 +9,7 @@ Fei Xie, Zhongdao Wang, Chao Ma
 :star: We release the bounding box implementation of the DiffusionTrack. More is coming.
 
 ## Abstract
-![DiffusionTrack_pipeline](tracking/pic/compare.png)
+![DiffusionTrack_pipeline](pic/compare.png)
 
 Existing Siamese or transformer trackers commonly pose visual object tracking as a one-shot detection problem, i.e., locating the target object in a \textbf{single forward evaluation} scheme. Despite the demonstrated success, these trackers may easily drift towards distractors with similar appearance due to the single forward evaluation scheme lacking self-correction. To address this issue, we cast visual tracking as a point set based denoising diffusion process and propose a novel generative learning based tracker, dubbed DiffusionTrack. Our DiffusionTrack possesses two appealing properties: 1) It follows a novel noise-to-target tracking paradigm that leverages \textbf{multiple} denoising diffusion steps to localize the target in a dynamic searching manner per frame. 2) It models the diffusion process using a point set representation, which can better handle appearance variations for more precise localization. One side benefit is that DiffusionTrack greatly simplifies the post-processing, e.g., removing the window penalty scheme. Without bells and whistles, our DiffusionTrack achieves leading performance over the state-of-the-art trackers and runs in real-time.
 
@@ -17,13 +17,13 @@ Existing Siamese or transformer trackers commonly pose visual object tracking as
 ### A Generative paradigm
 
 
-![DiffusionTrack_pipeline](tracking/pic/arch.png)
+![DiffusionTrack_pipeline](pic/arch.png)
 
 DiffusionTrack has an encoder-decoder structure. The encoder extracts target-aware features and feeds search
 features into the decoder. The decoder, comprising of a stack of diffusion layers, refines the point set groups to localize the target.
 
 
-![Head_Framework](tracking//pic/head.png)
+![Head_Framework](pic/head.png)
 
 Details of a diffusion layer. It consists of three components: 1) Global instance layer: it produces target proposals in a generative
 style and models the instance-level relationship. 2) Dynamic conv layer: it performs dynamic convolution with instance features. 3)
